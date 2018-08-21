@@ -1,0 +1,11 @@
+A simple flask hello world application 
+
+Prerequisites:
+	- Python
+	- Flask
+
+How to run the application
+
+1. Standalone:
+	- cd flask-app
+        - python hello.py
