@@ -9,3 +9,18 @@ How to run the application
 1. Standalone:
 	- cd flask-app
         - python hello.py
+
+2. In a Docker container
+        
+	#Go to the direcory with the application
+	
+	- cd flask-app 
+	
+	#build the image
+        
+	- docker build -t flask-app . #build the image
+        
+	#Run the application in a conatiner and port forward 
+	#to port 5000 or any other of your choosing
+	
+	- docker run -d -p 5000:5000 flask-app
