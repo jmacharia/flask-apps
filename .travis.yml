@@ -14,3 +14,15 @@ services:
 before_install:
   - docker build -t flask-app .
   - docker run -d -p 5000:5000 flask-app
+  - curl http://localhost:5000/
+deploy:
+- provider: codedeploy
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+  bucket: yourBucketNameHERE
+  key: latest.zip
+  bundle_type: zip
+  application: NameOfTheCodeDeployApplicationNameHERE
+  deployment_group: CodeDeployDeploymentGroupNameHERE
+  region: serverRegionHERE
+  on: *2
