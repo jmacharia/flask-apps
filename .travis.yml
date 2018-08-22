@@ -22,3 +22,11 @@ jobs:
       - docker tag flask-app makavelli2/labs
       - docker push makavelli2/labs
 
+deploy:
+- provider: codedeploy
+  wait-until-deployed: true
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+  application: flask-app
+  deployment_group: flask-app
+  region: us-west-1a
