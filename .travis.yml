@@ -11,18 +11,14 @@ sudo: required
 chmod: +x
 services:
   - docker
-before_install:
-  - docker build -t flask-app .
-  - docker run -d -p 5000:5000 flask-app
-  - curl http://localhost:5000/
-deploy:
-- provider: codedeploy
-  access_key_id: $AWS_ACCESS_KEY
-  secret_access_key: $AWS_SECRET_KEY
-  bucket: yourBucketNameHERE
-  key: latest.zip
-  bundle_type: zip
-  application: NameOfTheCodeDeployApplicationNameHERE
-  deployment_group: CodeDeployDeploymentGroupNameHERE
-  region: serverRegionHERE
-  on: *2
+
+jobs:
+  include:
+    - stage: build docker image
+      script:
+      - docker login -u=makavelli2 -p=makavelli
+      - docker build -t flask-app .
+      - docker images
+      - docker tag flask-app makavelli2/labs
+      - docker push makavelli2/labs
+
