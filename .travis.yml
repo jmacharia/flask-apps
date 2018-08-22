@@ -24,17 +24,9 @@ jobs:
 
 deploy:
 - provider: codedeploy
-<<<<<<< HEAD
   revision_type: github
-=======
-  wait-until-deployed: true
->>>>>>> 5e513e06c680df63c5a91547a3872426994da7c5
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key: $AWS_SECRET_KEY
   application: flask-app
   deployment_group: flask-app
-<<<<<<< HEAD
   region: us-west-1
-=======
-  region: us-west-1a
->>>>>>> 5e513e06c680df63c5a91547a3872426994da7c5
