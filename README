@@ -7,7 +7,9 @@ Prerequisites:
 How to run the application
 
 1. Standalone:
+
 	- cd flask-app
+
         - python hello.py
 
 2. In a Docker container
@@ -28,4 +30,3 @@ How to run the application
 
 http://production.flask-app.ga
 
-4.
