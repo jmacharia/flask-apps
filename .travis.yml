@@ -2,31 +2,35 @@ language: python
 python:
   - 2.7
 dist: trusty
-branches:
- only:
- - master
- - staging
- - production
 sudo: required
 chmod: +x
 services:
   - docker
 
-jobs:
-  include:
-    - stage: build docker image
-      script:
-      - docker login -u=makavelli2 -p=makavelli
-      - docker build -t flask-app .
-      - docker images
-      - docker tag flask-app makavelli2/labs
-      - docker push makavelli2/labs
+before_script:
+  - docker pull makavelli2/labs || true
+
+script:
+  - docker build -t flask-app .
+  - docker run makavelli2/labs
+  - docker tag flask-app makavelli2/labs
+
+after_script:
+  - docker images
+
+before_deploy:
+  - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
 
 deploy:
-- provider: codedeploy
-  revision_type: github
-  access_key_id: $AWS_ACCESS_KEY
-  secret_access_key: $AWS_SECRET_KEY
-  application: flask-app
-  deployment_group: flask-app
-  region: us-west-1
+  - provider: script
+    script: docker push makavelli2/labs
+    on:
+      branch: master
+
+  - provider: codedeploy
+    revision_type: github
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    application: flask-app
+    deployment_group: flask-app
+    region: us-west-1
