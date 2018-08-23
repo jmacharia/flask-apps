@@ -4,6 +4,11 @@ python:
 dist: trusty
 sudo: required
 chmod: +x
+branches:
+  only:
+    - master
+    - production
+    - staging
 services:
   - docker
 

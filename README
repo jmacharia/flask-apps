@@ -22,4 +22,10 @@ How to run the application
         
 	#Run the application in a conatiner 
 	
-	- docker run -d -p 5000:5000 flask-app
+	- docker run -d -p 80:5000 flask-app
+
+3. Access the application:
+
+http://production.flask-app.ga
+
+4.
