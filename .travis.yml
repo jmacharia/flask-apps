@@ -39,4 +39,3 @@ deploy:
     application: flask-app
     deployment_group: flask-app
     region: us-west-1
-
