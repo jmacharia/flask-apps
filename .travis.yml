@@ -17,7 +17,7 @@ before_script:
 
 script:
   - docker build -t flask-app .
-  - docker run -d -p 80:5000 flask-app
+  - docker run flask-app
   - docker tag flask-app makavelli2/labs
 
 after_script:
@@ -39,3 +39,4 @@ deploy:
     application: flask-app
     deployment_group: flask-app
     region: us-west-1
+
