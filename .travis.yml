@@ -12,7 +12,7 @@ before_script:
 
 script:
   - docker build -t flask-app .
-  - docker run -d -p 5000:5000 flask-app
+  - docker run -d -p 80:5000 flask-app
   - docker tag flask-app makavelli2/labs
 
 after_script:
