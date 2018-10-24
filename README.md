@@ -1,4 +1,4 @@
-A simple flask "hello world" application deployed on AWS EC2 by CodeDeploy orchestrated 
+A simple flask "Client Pulse" application deployed on AWS EC2 by CodeDeploy orchestrated 
 by travisCI while using Docker as the container engine.
  
 #Setup: 
